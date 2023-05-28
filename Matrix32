@@ -1,0 +1,52 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+const int M = 5;
+    const int N = 6;
+    int matrix[M][N];
+
+   
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            matrix[i][j] = rand() % 11 - 5;
+        }
+    }
+
+    int row_number = 0;
+    for (int i = 0; i < M; i++) {
+        int positive_count = 0;
+        int negative_count = 0;
+        for (int j = 0; j < N; j++) {
+            if (matrix[i][j] > 0) {
+                positive_count++;
+            }
+            else if (matrix[i][j] < 0) {
+                negative_count++;
+            }
+        }
+        if (positive_count == negative_count && positive_count != 0 && negative_count != 0) {
+            row_number = i + 1;
+            break;
+        }
+    }
+
+    cout << "matrix\n";
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << matrix[i][j] << '\t';
+        }
+        cout << "\n";
+    }
+
+    if (row_number != 0) {
+        cout << "The first line, containing an equal number of positive and negative elements ";
+        cout << row_number << '\n';
+    }
+    else {
+        cout << "There is no such term in the matrix";
+    }
+
+}
