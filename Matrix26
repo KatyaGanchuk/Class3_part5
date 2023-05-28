@@ -1,0 +1,34 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+const int M = 5; 
+    const int N = 4; 
+    int a[M][N];
+    srand(time(NULL)); 
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            a[i][j] = rand() % 10 + 1; 
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+    int min_col; 
+    int min_prod = INT_MAX; 
+    
+    for (int j = 0; j < N; j++) {
+        int prod = 1; 
+        for (int i = 0; i < M; i++) {
+            prod *= a[i][j];
+        }
+        if (prod < min_prod) {
+            min_prod = prod;
+            min_col = j;
+        }
+    }
+    
+    cout << "The number of the column with the smallest element " << min_col << endl;
+    cout << "min element " << min_prod << endl;
+}
