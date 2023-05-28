@@ -1,0 +1,27 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+srand(time(0)); 
+    const int M = 5; 
+    const int N = 4; 
+    int mas[M][N]; 
+
+    
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            mas[i][j] = rand() % 10; 
+        }
+    }
+
+   
+    for (int j = 1; j < N; j += 2) { 
+        int sum = 0;
+        for (int i = 0; i < M; i++) {
+            sum += mas[i][j];
+        }
+        cout << "The sum of the column elements" << j << sum << endl;
+    }
+}
